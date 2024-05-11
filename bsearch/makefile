@@ -1,6 +1,6 @@
-test:bserch.c
-	gcc -g -Wall -pedantic bserch.c -o bserch
+test:bsearch.c
+	gcc -g -Wall -pedantic bsearch.c -o bsearch
 
 .PHONY: clean
 clean:
-	rm bserch
+	rm bsearch
