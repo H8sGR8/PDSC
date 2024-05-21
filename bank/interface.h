@@ -30,7 +30,11 @@ void showIfOperationDidNotSucceed(FILE*, char*);
 
 void showIfOperationSucceeded(accountLen_t);
 
+bool askForConfirmation(int***);
+
 bool confirmeOperation(char*, int**, account_t);
+
+bool confirmeOperationForTransfer(char*, int**, account_t, account_t);
 
 void showTable(FILE*, accountLen_t*, void*, int, int*, bool (FILE*, char*, account_t*, int));
 
