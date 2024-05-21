@@ -133,24 +133,42 @@ void showIfOperationSucceeded(accountLen_t accountLen)
 	while (getchar() != 'q');
 }
 
-bool confirmeOperation(char* title, int** stage, account_t account)
+bool askForConfirmation(int*** stage)
 {
 	char c;
-	accountLen_t accountLen = DEFAULT_ACCOUNT_LEN;
-	setTableWidth(account, &accountLen);
-	showHeader(title);
-	showHeaderForTable(accountLen);
-	showAccount(account, accountLen);
-	showLine(accountLen);
 	printf("Are all data correct?\nPress 'y' if yes\n");
 	c = getchar(); 
 	if (c == 'y' || c == 'Y') {
 		while (getchar() == '\0');
 		return true;
 	}
-	**stage = 0;
+	***stage = 0;
 	while (getchar() == '\0');
 	return false;
+}
+
+bool confirmeOperation(char* title, int** stage, account_t account)
+{
+	accountLen_t accountLen = DEFAULT_ACCOUNT_LEN;
+	setTableWidth(account, &accountLen);
+	showHeader(title);
+	showHeaderForTable(accountLen);
+	showAccount(account, accountLen);
+	showLine(accountLen);
+	return askForConfirmation(&stage);
+}
+
+bool confirmeOperationForTransfer(char* title, int** stage, account_t account1, account_t account2)
+{
+	accountLen_t accountLen = DEFAULT_ACCOUNT_LEN;
+	setTableWidth(account1, &accountLen);
+	setTableWidth(account2, &accountLen);
+	showHeader(title);
+	showHeaderForTable(accountLen);
+	showAccount(account1, accountLen);
+	showAccount(account2, accountLen);
+	showLine(accountLen);
+	return askForConfirmation(&stage);
 }
 
 void showTable(FILE* file, accountLen_t* accountLen, void* input, int lookingFor, int* printedAccounts, bool (*wantedRecord)(FILE*, char*, account_t*, int))
