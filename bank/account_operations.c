@@ -204,9 +204,7 @@ void transferMoneyOperation(int* operationStage)
 		if (id1 != 0 && id2 != 0) {
 			getAmountOfMoney(&moneyToTransfer, title, "transfer");
 			transferMoney(&account1, &account2, &moneyToTransfer);
-			if (!confirmeOperation(title, &operationStage, account1))
-				return;
-			if (!confirmeOperation(title, &operationStage, account2))
+			if (!confirmeOperationForTransfer(title, &operationStage, account1, account2))
 				return;
 			updateFile(file, account1);
 			updateFile(file, account2);
