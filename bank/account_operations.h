@@ -6,7 +6,7 @@
 #include "interface.h"
 #include "gather_data.h"
 
-void createAccount(int* operationStage);
+void createAccount(int*);
 
 void getAccountNumber(char* , char*, char*);
 
