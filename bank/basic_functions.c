@@ -159,8 +159,7 @@ int chooseOption(int numberOfOptions)
 	check = scanf("%d", &option);
 	while (getchar() != '\n')
 		;
-	return (check == 0 || !(option >= 1 && option <= numberOfOptions)) ? 0
-																	   : option;
+	return (check == 0 || !(option >= 1 && option <= numberOfOptions)) ? 0 : option;
 }
 
 bool isNumber(char array[])
